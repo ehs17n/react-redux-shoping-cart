@@ -1,24 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import StoreItem from './components/StoreItem';
+import storeItems from './data/items.json';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <div className='flex justify-between'>
+        <nav>
+          <ul className='flex space-x-3 m-5 p-3 font-sans font-bold'>
+            <li>Home</li>
+
+            <li>Post</li>
+
+            <li>Hey</li>
+          </ul>
+        </nav>
+        <div className='m-5 mr-12 h-[50px] w-[50px] border rounded-full border-black justify-center items-center relative '>
+          <h1 className='absolute left-[19px] top-[10px]'>0</h1>
+        </div>
+      </div>
+      <main className='grid grid-cols-3 justify-center items-center'>
+        {storeItems.map((storeItem) => (
+          <StoreItem {...storeItem}></StoreItem>
+        ))}
+      </main>
     </div>
   );
 }
