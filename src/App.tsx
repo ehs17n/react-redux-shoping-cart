@@ -1,7 +1,11 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import StoreItem from './components/StoreItem';
-import storeItems from './data/items.json';
+
+import { RootState } from './store/store';
+
 function App() {
+    const items = useSelector((state: RootState) => state.cart.items);
   return (
     <div className='App'>
       <div className='flex justify-between'>
@@ -19,7 +23,7 @@ function App() {
         </div>
       </div>
       <main className='grid grid-cols-3 justify-center items-center'>
-        {storeItems.map((storeItem) => (
+        {items.map((storeItem) => (
           <StoreItem {...storeItem}></StoreItem>
         ))}
       </main>
